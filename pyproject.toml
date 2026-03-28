@@ -1,0 +1,89 @@
+[tool.poetry]
+name = "enhanced-android-vulnerability-detection-file"
+version = "0.3.0"
+description = "Enhanced Android vulnerability detection with PER-FILE clustering and context-aware summarization"
+authors = ["Panagiotis Binikos <panagiotis.binikos@example.com>"]
+readme = "README.md"
+packages = [{include = "src"}]
+package-mode = false
+
+[tool.poetry.dependencies]
+python = ">=3.11,<4.0"
+
+# === CORE PIPELINE DEPENDENCIES ===
+mobsfscan = "0.3.8"
+semgrep = "^1.147.0"  # Required for mobsfscan Java code analysis
+
+# Parsing (Tree-sitter is now the primary parser)
+tree-sitter = "^0.21.0"         # Main library
+tree-sitter-java = "^0.23.5"    # UPDATED to the latest version
+
+# Data processing and utilities
+numpy = "^1.26.0"
+pandas = "^2.2.0"
+pydantic = "^2.7.0"
+tqdm = "4.66.4"
+rich = ">=13.5.2,<13.6.0"
+python-dotenv = "^1.0.0"
+pyyaml = "^6.0"
+click = "^8.1.0"
+joblib = "^1.4.0"
+
+# === CLUSTERING & SEMANTIC ANALYSIS ===
+transformers = "4.41.0"
+torch = "^2.3.0"
+tokenizers = "0.19.0"
+huggingface-hub = "^0.23.0"
+scikit-learn = "1.5.0"
+accelerate = "^0.30.0"
+sentencepiece = "^0.2.0"
+protobuf = "^5.26.1" 
+
+# === SUMMARIZATION (LLM) ===
+bitsandbytes = ">=0.43.0"
+safetensors = "^0.4.0"
+
+# === (REMOVED / DEPRECATED) ===
+# javalang, python-louvain, iterative-voting-consensus are removed.
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^8.2.0"
+pytest-cov = "^5.0.0"
+pytest-mock = "^3.12.0"
+black = "^24.4.0"
+isort = "^5.13.0"
+flake8 = "^7.0.0"
+mypy = "^1.10.0"
+pre-commit = "^3.7.0"
+ipython = "^8.25.0"
+jupyterlab = "^4.2.0"
+
+[tool.poetry.scripts]
+run-pipeline = "src.main:main"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+# --- CONFIGURATION FOR CODE QUALITY TOOLS ---
+[tool.black]
+line-length = 88
+target-version = ['py311']
+
+[tool.isort]
+profile = "black"
+multi_line_output = 3
+line_length = 88
+known_first_party = ["src"]
+
+[tool.mypy]
+python_version = "3.11"
+warn_return_any = true
+warn_unused_configs = true
+disallow_untyped_defs = true
+ignore_missing_imports = true
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = "test_*.py"
+addopts = "--cov=src --cov-report=term-missing:skip-covered --cov-fail-under=80"

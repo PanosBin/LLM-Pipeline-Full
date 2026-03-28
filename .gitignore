@@ -1,0 +1,4 @@
+.DS_Store
+out_*/
+.env
+set.sh # Or just HF_TOKEN= lines
