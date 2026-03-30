@@ -1,0 +1,511 @@
+{
+  "metadata": {
+    "timestamp": "2026-03-29T05:35:44.451202",
+    "model": "codellama/CodeLlama-7b-Instruct-hf",
+    "num_cases": 10,
+    "num_runs": 1,
+    "confidence_scale": "1-5 (1=Not at all, 2=Slightly, 3=Moderately, 4=Very, 5=Extremely)"
+  },
+  "cases": [
+    {
+      "case_id": 1,
+      "vuln_type": "Hidden UI Element (android_hidden_ui)",
+      "cwe": "CWE-919: Weaknesses in Mobile Applications",
+      "severity": "ERROR",
+      "file": "GetTransactions.java | com.app.damnvulnerablebank",
+      "flagged_code": "recyclerView.setVisibility(View.GONE);",
+      "ground_truth": "FALSE_POSITIVE",
+      "summaries": {
+        "method": "The method extractRecords() makes an HTTP POST request to the URL stored in the \"apiurl\" preference, with a JSON payload containing the encrypted data received from the previous screen.",
+        "class": "This class GetTransactions extends AppCompatActivity and provides a user interface for viewing transaction records.",
+        "cluster": "A user interface for adding, approving, and managing beneficiaries for a mobile banking application."
+      }
+    },
+    {
+      "case_id": 2,
+      "vuln_type": "Sensitive Data in Log File (android_logging)",
+      "cwe": "CWE-532: Insertion of Sensitive Information into Log File",
+      "severity": "INFO",
+      "file": "SendMoney.java | com.app.damnvulnerablebank",
+      "flagged_code": "Log.d(\"Send Money\", decryptedResponse.toString());",
+      "ground_truth": "TRUE_POSITIVE",
+      "summaries": {
+        "method": "The code sends a POST request to an API endpoint with encrypted data, retrieves the response, decrypts it, and displays the result as a toast message or starts a new activity depending on the status of the response.",
+        "class": "The SendMoney class is an Android app that allows users to transfer money from their account to another account using biometric authentication.",
+        "cluster": "A user interface for adding, approving, and managing beneficiaries for a mobile banking application."
+      }
+    },
+    {
+      "case_id": 3,
+      "vuln_type": "Sensitive Data in Log File (android_logging)",
+      "cwe": "CWE-532: Insertion of Sensitive Information into Log File",
+      "severity": "INFO",
+      "file": "LogActivity.java | jakhar.aseem.diva",
+      "flagged_code": "Log.e(\"diva-log\", \"Error while processing transaction with credit card: \" + cctxt.getText().toString());",
+      "ground_truth": "TRUE_POSITIVE",
+      "summaries": {
+        "method": "The checkout method takes an EditText object as input and attempts to process the credit card information entered by the user.",
+        "class": "This class LogActivity is an Android activity that allows users to enter their credit card information and process it using a custom processCC() method.",
+        "cluster": "A way for users to manage their API credentials and access control settings on an Android device."
+      }
+    },
+    {
+      "case_id": 4,
+      "vuln_type": "Hidden UI Element (android_hidden_ui)",
+      "cwe": "CWE-919: Weaknesses in Mobile Applications",
+      "severity": "ERROR",
+      "file": "AccessControl3NotesActivity.java | jakhar.aseem.diva",
+      "flagged_code": "pinTxt.setVisibility(View.INVISIBLE);",
+      "ground_truth": "FALSE_POSITIVE",
+      "summaries": {
+        "method": "The code retrieves a shared preference value for a PIN, compares it to the text entered by the user in an EditText field, and if they match, displays a list of notes from a database using a SimpleCursorAdapter.",
+        "class": "This class AccessControl3NotesActivity extends AppCompatActivity and provides an interface for accessing and displaying private notes stored in a database.",
+        "cluster": "A way for users to manage their API credentials and access control settings on an Android device."
+      }
+    },
+    {
+      "case_id": 5,
+      "vuln_type": "SSL Certificate Validation Bypass (accept_self_signed_certificate)",
+      "cwe": "CWE-295: Improper Certificate Validation",
+      "severity": "ERROR",
+      "file": "SecureURLOpen.java | org.cysecurity.example.dodobank.model",
+      "flagged_code": "public void checkServerTrusted(X509Certificate[] chain, String authType) throws CertificateException { }",
+      "ground_truth": "FALSE_POSITIVE",
+      "summaries": {
+        "method": "The code creates an SSL socket factory that trusts all certificates and skips host name verification, which is useful for testing purposes but should not be used in production environments.",
+        "class": "This class provides methods for making HTTPS requests with custom SSL socket factories, allowing the user to bypass host name verification in the Android emulator.",
+        "cluster": "The classes collectively handle the transfer of funds between accounts using a shared preference file for storing user data and a background task for sending the transfer request."
+      }
+    },
+    {
+      "case_id": 6,
+      "vuln_type": "SQLite Raw Query Injection (sqlite_injection)",
+      "cwe": "CWE-78: Improper Neutralization of Special Elements used in an OS Command",
+      "severity": "WARNING",
+      "file": "TransactionTable.java | org.cysecurity.example.dodobank.controller",
+      "flagged_code": "db.rawQuery(\"select ... from ... where TRANSACTION_ID=\" + id, null);",
+      "ground_truth": "FALSE_POSITIVE",
+      "summaries": {
+        "method": "The code inserts a new transaction into a database table with the given ID, sender, receiver, and amount, and logs the transaction details to the console.",
+        "class": "This class provides an interface for managing transactions in a database.",
+        "cluster": "The classes collectively handle the transfer of funds between accounts using a shared preference file for storing user data and a background task for sending the transfer request."
+      }
+    },
+    {
+      "case_id": 7,
+      "vuln_type": "Weak Cryptographic Algorithm: AES ECB (aes_ecb_mode_default)",
+      "cwe": "CWE-327: Use of a Broken or Risky Cryptographic Algorithm",
+      "severity": "ERROR",
+      "file": "WeakCrypto.java | oversecured.ovaa.utils",
+      "flagged_code": "Cipher instance = Cipher.getInstance(\"AES\");",
+      "ground_truth": "TRUE_POSITIVE",
+      "summaries": {
+        "method": "The provided code creates an AES encryption key using the SecretKeySpec class and initializes a Cipher object with the key to encrypt a string of data.",
+        "class": "This class provides a weak encryption mechanism using the AES algorithm with a fixed key and returns the encrypted data as a base64-encoded string.",
+        "cluster": "A way to interact with the Android platform and perform various tasks such as starting activities, making network requests, and handling user authentication."
+      }
+    },
+    {
+      "case_id": 8,
+      "vuln_type": "Static IV in AES-CBC Mode (cbc_static_iv)",
+      "cwe": "CWE-329: Not Using a Random IV with CBC Mode",
+      "severity": "ERROR",
+      "file": "Encryption.java | com.htbridge.pivaa.handlers",
+      "flagged_code": "byte[] IV = { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };",
+      "ground_truth": "TRUE_POSITIVE",
+      "summaries": {
+        "method": "The provided Java code uses the AES encryption algorithm with CBC mode and PKCS5 padding to encrypt a given string, using a hardcoded secret key and initialization vector, and then base64 encodes the resulting ciphertext before returning it as a string.",
+        "class": "This class provides various encryption-related methods for encrypting and decrypting data using different algorithms such as AES with ECB and CBC modes, PKCS5 padding, and base64 encoding.",
+        "cluster": "A database management system for storing and retrieving data in an Android application."
+      }
+    },
+    {
+      "case_id": 9,
+      "vuln_type": "Sensitive Data in Log File (android_logging)",
+      "cwe": "CWE-532: Insertion of Sensitive Information into Log File",
+      "severity": "INFO",
+      "file": "Authentication.java | com.htbridge.pivaa.handlers",
+      "flagged_code": "Log.i(\"info\", \"saveLoginInfo: username = \" + username + \" | password = \" + password);",
+      "ground_truth": "TRUE_POSITIVE",
+      "summaries": {
+        "method": "The code saves a login credential pair consisting of a username and password to a temporary file in the cache directory of an Android application, using MD5 encryption to hash the credentials before writing them to the file.",
+        "class": "This class provides methods for saving and loading login information to and from an external storage device.",
+        "cluster": "A framework for creating web-based applications using Android's WebView component."
+      }
+    },
+    {
+      "case_id": 10,
+      "vuln_type": "Sensitive Data in Log File (android_logging)",
+      "cwe": "CWE-532: Insertion of Sensitive Information into Log File",
+      "severity": "INFO",
+      "file": "Digest.java | org.apache.commons.codec.cli (Apache Commons Codec library)",
+      "flagged_code": "System.out.println(prefix + Hex.encodeHexString(digest) + (fileName != null ? \" \" + fileName : \"\"));",
+      "ground_truth": "FALSE_POSITIVE",
+      "summaries": {
+        "method": "This method takes a string prefix, a byte array digest, and a string fileName as input, and prints them to the console using the format specified by the shasum(1) command-line tool.",
+        "class": "This class provides a command-line interface for computing message digests using the Apache Commons Codec library.",
+        "cluster": "Various utilities for working with character encodings in Java."
+      }
+    }
+  ],
+  "baseline_runs": [
+    [
+      {
+        "prediction": "TRUE_POSITIVE",
+        "confidence": 4,
+        "reasoning": "The flagged code, \"recyclerView.setVisibility(View.GONE);\" is a common safe Android pattern and does not pose a security risk in context. This code is used to hide the RecyclerView from the user, which is a normal and safe practice in Android development. Therefore, this finding is a false positive.",
+        "case_id": 1,
+        "ground_truth": "FALSE_POSITIVE",
+        "correct": false,
+        "raw_response": "CLASSIFICATION: TRUE_POSITIVE\nCONFIDENCE: 4\nREASONING: The flagged code, \"recyclerView.setVisibility(View.GONE);\" is a common safe Android pattern and does not pose a security risk in context. This code is used to hide the RecyclerView from the user, which is a normal and safe practice in Android development. Therefore, this finding is a false positive."
+      },
+      {
+        "prediction": "FALSE_POSITIVE",
+        "confidence": 4,
+        "reasoning": "The flagged code is a common safe Android pattern, and it is not a real vulnerability. The `Log.d()` method is used to log debug information, and it is not a security risk to log sensitive data in a log file. The `decryptedResponse` object is not sensitive data, and it is not being logged in a way that could potentially expose it to unauthorized parties. Additionally, the code is not test/demo code, but rather production code.",
+        "case_id": 2,
+        "ground_truth": "TRUE_POSITIVE",
+        "correct": false,
+        "raw_response": "CLASSIFICATION: FALSE_POSITIVE\nCONFIDENCE: 4\nREASONING: The flagged code is a common safe Android pattern, and it is not a real vulnerability. The `Log.d()` method is used to log debug information, and it is not a security risk to log sensitive data in a log file. The `decryptedResponse` object is not sensitive data, and it is not being logged in a way that could potentially expose it to unauthorized parties. Additionally, the code is not test/demo code, but rather production code."
+      },
+      {
+        "prediction": "FALSE_POSITIVE",
+        "confidence": 4,
+        "reasoning": "The flagged code is a common safe Android pattern, and it is not a vulnerability. The code is logging information, but it is not logging sensitive data. The `cctxt.getText().toString()` method is used to get the text from a `TextView`, which is a common Android widget used to display text. This method does not expose any sensitive data, and the log message is not logging any sensitive data. Therefore, this finding is a false positive.",
+        "case_id": 3,
+        "ground_truth": "TRUE_POSITIVE",
+        "correct": false,
+        "raw_response": "CLASSIFICATION: FALSE_POSITIVE\nCONFIDENCE: 4\nREASONING: The flagged code is a common safe Android pattern, and it is not a vulnerability. The code is logging information, but it is not logging sensitive data. The `cctxt.getText().toString()` method is used to get the text from a `TextView`, which is a common Android widget used to display text. This method does not expose any sensitive data, and the log message is not logging any sensitive data. Therefore, this finding is a false positive."
+      },
+      {
+        "prediction": "TRUE_POSITIVE",
+        "confidence": 4,
+        "reasoning": "The flagged code, `pinTxt.setVisibility(View.INVISIBLE);`, sets the visibility of a text view to invisible, which can be used to hide data from the user. However, this is a common safe Android pattern and is not a vulnerability in itself. The code is likely used to hide sensitive data from the user, but it is not a security risk in context.",
+        "case_id": 4,
+        "ground_truth": "FALSE_POSITIVE",
+        "correct": false,
+        "raw_response": "CLASSIFICATION: TRUE_POSITIVE\nCONFIDENCE: 4\nREASONING: The flagged code, `pinTxt.setVisibility(View.INVISIBLE);`, sets the visibility of a text view to invisible, which can be used to hide data from the user. However, this is a common safe Android pattern and is not a vulnerability in itself. The code is likely used to hide sensitive data from the user, but it is not a security risk in context."
+      },
+      {
+        "prediction": "TRUE_POSITIVE",
+        "confidence": 4,
+        "reasoning": "This finding is a real vulnerability. The flagged code is an empty method that does not perform any validation on the SSL certificate, which makes it vulnerable to MITM attacks. This is a critical security hole and should be addressed immediately.",
+        "case_id": 5,
+        "ground_truth": "FALSE_POSITIVE",
+        "correct": false,
+        "raw_response": "CLASSIFICATION: TRUE_POSITIVE\nCONFIDENCE: 4\nREASONING: This finding is a real vulnerability. The flagged code is an empty method that does not perform any validation on the SSL certificate, which makes it vulnerable to MITM attacks. This is a critical security hole and should be addressed immediately."
+      },
+      {
+        "prediction": "TRUE_POSITIVE",
+        "confidence": 4,
+        "reasoning": "The flagged code is a raw SQL query that uses untrusted user input, which can lead to SQL Injection vulnerabilities. The code also handles sensitive information, which should be encrypted and written to the database. This is a real vulnerability that needs to be addressed.",
+        "case_id": 6,
+        "ground_truth": "FALSE_POSITIVE",
+        "correct": false,
+        "raw_response": "CLASSIFICATION: TRUE_POSITIVE\nCONFIDENCE: 4\nREASONING: The flagged code is a raw SQL query that uses untrusted user input, which can lead to SQL Injection vulnerabilities. The code also handles sensitive information, which should be encrypted and written to the database. This is a real vulnerability that needs to be addressed."
+      },
+      {
+        "prediction": "TRUE_POSITIVE",
+        "confidence": 4,
+        "reasoning": "This finding is a real vulnerability. The description of the vulnerability, \"ECB mode is known to be weak as it results in the same ciphertext for identical blocks of plaintext,\" indicates that the code is using a weak cryptographic algorithm, which is a common security risk. Additionally, the file name and location suggest that this is application code, not library/framework code. Therefore, this is a true positive.",
+        "case_id": 7,
+        "ground_truth": "TRUE_POSITIVE",
+        "correct": true,
+        "raw_response": "CLASSIFICATION: TRUE_POSITIVE\nCONFIDENCE: 4\nREASONING: This finding is a real vulnerability. The description of the vulnerability, \"ECB mode is known to be weak as it results in the same ciphertext for identical blocks of plaintext,\" indicates that the code is using a weak cryptographic algorithm, which is a common security risk. Additionally, the file name and location suggest that this is application code, not library/framework code. Therefore, this is a true positive."
+      },
+      {
+        "prediction": "TRUE_POSITIVE",
+        "confidence": 4,
+        "reasoning": "The flagged code is a static IV in AES-CBC mode, which is a vulnerability. The code is flagged by the SAST tool because it is not using a random IV, which makes the ciphertext vulnerable to Chosen Plaintext Attack. The code is also flagged by OWASP Mobile M5: Insufficient Cryptography, which further confirms that this is a real vulnerability.",
+        "case_id": 8,
+        "ground_truth": "TRUE_POSITIVE",
+        "correct": true,
+        "raw_response": "CLASSIFICATION: TRUE_POSITIVE\nCONFIDENCE: 4\nREASONING: The flagged code is a static IV in AES-CBC mode, which is a vulnerability. The code is flagged by the SAST tool because it is not using a random IV, which makes the ciphertext vulnerable to Chosen Plaintext Attack. The code is also flagged by OWASP Mobile M5: Insufficient Cryptography, which further confirms that this is a real vulnerability."
+      },
+      {
+        "prediction": "FALSE_POSITIVE",
+        "confidence": 3,
+        "reasoning": "This finding is a false positive because the code is logging sensitive information, but it is not actually vulnerable to an attack. The log message is informative and does not contain any sensitive data. The code is also handling the sensitive data properly by concatenating the username and password with a space in between. The flagged code is a common safe Android pattern and is not a vulnerability.",
+        "case_id": 9,
+        "ground_truth": "TRUE_POSITIVE",
+        "correct": false,
+        "raw_response": "CLASSIFICATION: FALSE_POSITIVE\nCONFIDENCE: 3\nREASONING: This finding is a false positive because the code is logging sensitive information, but it is not actually vulnerable to an attack. The log message is informative and does not contain any sensitive data. The code is also handling the sensitive data properly by concatenating the username and password with a space in between. The flagged code is a common safe Android pattern and is not a vulnerability."
+      },
+      {
+        "prediction": "FALSE_POSITIVE",
+        "confidence": 3,
+        "reasoning": "The flagged code is a common safe Android pattern, as it logs the digest of a file, which is a cryptographic hash. The hash is used to verify the integrity of the file, and it is not sensitive data. The code is also part of a library, which means it is not application code. Additionally, the code is not test/demo code, as it is used in the production environment. Therefore, this finding is a false positive.",
+        "case_id": 10,
+        "ground_truth": "FALSE_POSITIVE",
+        "correct": true,
+        "raw_response": "CLASSIFICATION: FALSE_POSITIVE\nCONFIDENCE: 3\nREASONING: The flagged code is a common safe Android pattern, as it logs the digest of a file, which is a cryptographic hash. The hash is used to verify the integrity of the file, and it is not sensitive data. The code is also part of a library, which means it is not application code. Additionally, the code is not test/demo code, as it is used in the production environment. Therefore, this finding is a false positive."
+      }
+    ]
+  ],
+  "enhanced_runs": [
+    [
+      {
+        "prediction": "FALSE_POSITIVE",
+        "confidence": 4,
+        "reasoning": "The flagged code, \"recyclerView.setVisibility(View.GONE);\" is a common safe Android pattern for hiding elements in a view. The LLM-generated summaries provide context that the code is part of a user interface for viewing transaction records, which suggests that the hidden elements are not sensitive data. Additionally, the method summary mentions that the HTTP POST request is made with a JSON payload containing the encrypted data received from the previous screen, which further suggests that the hidden elements are not sensitive data. Therefore, this finding is a false positive.",
+        "case_id": 1,
+        "ground_truth": "FALSE_POSITIVE",
+        "correct": true,
+        "summaries_used": {
+          "method": "The method extractRecords() makes an HTTP POST request to the URL stored in the \"apiurl\" preference, with a JSON payload containing the encrypted data received from the previous screen.",
+          "class": "This class GetTransactions extends AppCompatActivity and provides a user interface for viewing transaction records.",
+          "cluster": "A user interface for adding, approving, and managing beneficiaries for a mobile banking application."
+        },
+        "raw_response": "CLASSIFICATION: FALSE_POSITIVE\nCONFIDENCE: 4\nREASONING: The flagged code, \"recyclerView.setVisibility(View.GONE);\" is a common safe Android pattern for hiding elements in a view. The LLM-generated summaries provide context that the code is part of a user interface for viewing transaction records, which suggests that the hidden elements are not sensitive data. Additionally, the method summary mentions that the HTTP POST request is made with a JSON payload containing the encrypted data received from the previous screen, which further suggests that the hidden elements are not sensitive data. Therefore, this finding is a false positive."
+      },
+      {
+        "prediction": "FALSE_POSITIVE",
+        "confidence": 4,
+        "reasoning": "The flagged code is a common safe Android pattern, as it logs information in a secure way by encrypting it before logging. The LLM-generated summaries provide context that the code is part of a secure payment process, and the flagged code is a normal part of that process. Additionally, the code does not handle sensitive data, and it is not test/demo code. Therefore, this finding is a false positive.",
+        "case_id": 2,
+        "ground_truth": "TRUE_POSITIVE",
+        "correct": false,
+        "summaries_used": {
+          "method": "The code sends a POST request to an API endpoint with encrypted data, retrieves the response, decrypts it, and displays the result as a toast message or starts a new activity depending on the status of the response.",
+          "class": "The SendMoney class is an Android app that allows users to transfer money from their account to another account using biometric authentication.",
+          "cluster": "A user interface for adding, approving, and managing beneficiaries for a mobile banking application."
+        },
+        "raw_response": "CLASSIFICATION: FALSE_POSITIVE\nCONFIDENCE: 4\nREASONING: The flagged code is a common safe Android pattern, as it logs information in a secure way by encrypting it before logging. The LLM-generated summaries provide context that the code is part of a secure payment process, and the flagged code is a normal part of that process. Additionally, the code does not handle sensitive data, and it is not test/demo code. Therefore, this finding is a false positive."
+      },
+      {
+        "prediction": "FALSE_POSITIVE",
+        "confidence": 4,
+        "reasoning": "The flagged code is a common safe Android pattern, as it logs information that is not sensitive. The method summary and class summary indicate that the code is related to a checkout process, but the cluster summary does not provide any information about sensitive data. Additionally, the flagged code is not test/demo code, and it is not library/framework code. Therefore, this finding is a false positive.",
+        "case_id": 3,
+        "ground_truth": "TRUE_POSITIVE",
+        "correct": false,
+        "summaries_used": {
+          "method": "The checkout method takes an EditText object as input and attempts to process the credit card information entered by the user.",
+          "class": "This class LogActivity is an Android activity that allows users to enter their credit card information and process it using a custom processCC() method.",
+          "cluster": "A way for users to manage their API credentials and access control settings on an Android device."
+        },
+        "raw_response": "CLASSIFICATION: FALSE_POSITIVE\nCONFIDENCE: 4\nREASONING: The flagged code is a common safe Android pattern, as it logs information that is not sensitive. The method summary and class summary indicate that the code is related to a checkout process, but the cluster summary does not provide any information about sensitive data. Additionally, the flagged code is not test/demo code, and it is not library/framework code. Therefore, this finding is a false positive."
+      },
+      {
+        "prediction": "FALSE_POSITIVE",
+        "confidence": 4,
+        "reasoning": "The code in question is a common safe Android pattern, as it is setting the visibility of a text view to invisible, which is a valid use case for hiding sensitive data. The method summary and class summary provide context that this is a legitimate use case, and the cluster summary suggests that this is a feature for managing API credentials and access control settings. The fact that this is a test/demo code rather than production code also supports the classification as a false positive.",
+        "case_id": 4,
+        "ground_truth": "FALSE_POSITIVE",
+        "correct": true,
+        "summaries_used": {
+          "method": "The code retrieves a shared preference value for a PIN, compares it to the text entered by the user in an EditText field, and if they match, displays a list of notes from a database using a SimpleCursorAdapter.",
+          "class": "This class AccessControl3NotesActivity extends AppCompatActivity and provides an interface for accessing and displaying private notes stored in a database.",
+          "cluster": "A way for users to manage their API credentials and access control settings on an Android device."
+        },
+        "raw_response": "CLASSIFICATION: FALSE_POSITIVE\nCONFIDENCE: 4\nREASONING: The code in question is a common safe Android pattern, as it is setting the visibility of a text view to invisible, which is a valid use case for hiding sensitive data. The method summary and class summary provide context that this is a legitimate use case, and the cluster summary suggests that this is a feature for managing API credentials and access control settings. The fact that this is a test/demo code rather than production code also supports the classification as a false positive."
+      },
+      {
+        "prediction": "TRUE_POSITIVE",
+        "confidence": 4,
+        "reasoning": "The SAST tool has flagged a potential vulnerability in the code, and the LLM-generated context summaries provide additional information about the code's behavior. However, upon further examination, it appears that the code is not actually dangerous and is a common safe Android pattern. The method is empty, and the class and cluster summaries indicate that the code is not used in production environments. Therefore, this finding is a false positive.",
+        "case_id": 5,
+        "ground_truth": "FALSE_POSITIVE",
+        "correct": false,
+        "summaries_used": {
+          "method": "The code creates an SSL socket factory that trusts all certificates and skips host name verification, which is useful for testing purposes but should not be used in production environments.",
+          "class": "This class provides methods for making HTTPS requests with custom SSL socket factories, allowing the user to bypass host name verification in the Android emulator.",
+          "cluster": "The classes collectively handle the transfer of funds between accounts using a shared preference file for storing user data and a background task for sending the transfer request."
+        },
+        "raw_response": "CLASSIFICATION: TRUE_POSITIVE\nCONFIDENCE: 4\nREASONING: The SAST tool has flagged a potential vulnerability in the code, and the LLM-generated context summaries provide additional information about the code's behavior. However, upon further examination, it appears that the code is not actually dangerous and is a common safe Android pattern. The method is empty, and the class and cluster summaries indicate that the code is not used in production environments. Therefore, this finding is a false positive."
+      },
+      {
+        "prediction": "TRUE_POSITIVE",
+        "confidence": 4,
+        "reasoning": "This finding is a real vulnerability because the code is executing a raw SQL query with untrusted user input, which can lead to SQL Injection attacks. The LLM-generated summaries provide context about the method, class, and cluster, which suggest that this code is handling sensitive data and is not test/demo code. The vulnerability is also highlighted by the OWASP Mobile M7: Client Code Quality recommendation, which emphasizes the importance of proper input validation and secure coding practices.",
+        "case_id": 6,
+        "ground_truth": "FALSE_POSITIVE",
+        "correct": false,
+        "summaries_used": {
+          "method": "The code inserts a new transaction into a database table with the given ID, sender, receiver, and amount, and logs the transaction details to the console.",
+          "class": "This class provides an interface for managing transactions in a database.",
+          "cluster": "The classes collectively handle the transfer of funds between accounts using a shared preference file for storing user data and a background task for sending the transfer request."
+        },
+        "raw_response": "CLASSIFICATION: TRUE_POSITIVE\nCONFIDENCE: 4\nREASONING: This finding is a real vulnerability because the code is executing a raw SQL query with untrusted user input, which can lead to SQL Injection attacks. The LLM-generated summaries provide context about the method, class, and cluster, which suggest that this code is handling sensitive data and is not test/demo code. The vulnerability is also highlighted by the OWASP Mobile M7: Client Code Quality recommendation, which emphasizes the importance of proper input validation and secure coding practices."
+      },
+      {
+        "prediction": "TRUE_POSITIVE",
+        "confidence": 4,
+        "reasoning": "The SAST tool has flagged a potential vulnerability in the code, specifically the use of the AES ECB mode, which is known to be weak and can result in the same ciphertext for identical blocks of plaintext. However, the LLM-generated context summaries provide additional context and information about the code, such as the method summary, class summary, and cluster summary. These summaries indicate that the code is not actually dangerous and is a common safe Android pattern. Additionally, the code does not handle sensitive data, and it is not test/demo code. Therefore, this finding is a false positive.",
+        "case_id": 7,
+        "ground_truth": "TRUE_POSITIVE",
+        "correct": true,
+        "summaries_used": {
+          "method": "The provided code creates an AES encryption key using the SecretKeySpec class and initializes a Cipher object with the key to encrypt a string of data.",
+          "class": "This class provides a weak encryption mechanism using the AES algorithm with a fixed key and returns the encrypted data as a base64-encoded string.",
+          "cluster": "A way to interact with the Android platform and perform various tasks such as starting activities, making network requests, and handling user authentication."
+        },
+        "raw_response": "CLASSIFICATION: TRUE_POSITIVE\nCONFIDENCE: 4\nREASONING: The SAST tool has flagged a potential vulnerability in the code, specifically the use of the AES ECB mode, which is known to be weak and can result in the same ciphertext for identical blocks of plaintext. However, the LLM-generated context summaries provide additional context and information about the code, such as the method summary, class summary, and cluster summary. These summaries indicate that the code is not actually dangerous and is a common safe Android pattern. Additionally, the code does not handle sensitive data, and it is not test/demo code. Therefore, this finding is a false positive."
+      },
+      {
+        "prediction": "TRUE_POSITIVE",
+        "confidence": 4,
+        "reasoning": "This finding is a true positive because the flagged code is actually dangerous, and it is not a common safe Android pattern. The flagged code is using a hardcoded secret key and initialization vector, which makes the ciphertext vulnerable to Chosen Plaintext Attack. The method summary and class summary provide additional context that the code is used for encryption and decryption, and the cluster summary indicates that the code is related to a database management system. Therefore, it is likely that this code is intended to be used in a production environment and is not test/demo code.",
+        "case_id": 8,
+        "ground_truth": "TRUE_POSITIVE",
+        "correct": true,
+        "summaries_used": {
+          "method": "The provided Java code uses the AES encryption algorithm with CBC mode and PKCS5 padding to encrypt a given string, using a hardcoded secret key and initialization vector, and then base64 encodes the resulting ciphertext before returning it as a string.",
+          "class": "This class provides various encryption-related methods for encrypting and decrypting data using different algorithms such as AES with ECB and CBC modes, PKCS5 padding, and base64 encoding.",
+          "cluster": "A database management system for storing and retrieving data in an Android application."
+        },
+        "raw_response": "CLASSIFICATION: TRUE_POSITIVE\nCONFIDENCE: 4\nREASONING: This finding is a true positive because the flagged code is actually dangerous, and it is not a common safe Android pattern. The flagged code is using a hardcoded secret key and initialization vector, which makes the ciphertext vulnerable to Chosen Plaintext Attack. The method summary and class summary provide additional context that the code is used for encryption and decryption, and the cluster summary indicates that the code is related to a database management system. Therefore, it is likely that this code is intended to be used in a production environment and is not test/demo code."
+      },
+      {
+        "prediction": "FALSE_POSITIVE",
+        "confidence": 3,
+        "reasoning": "The LLM-generated summaries indicate that the code saves a login credential pair to a temporary file in the cache directory of an Android application using MD5 encryption. While this may be considered a vulnerability if the file is not properly secured or if the encryption is not strong enough, the context of the code suggests that this is a common and safe practice in Android development. The code also handles sensitive data, as it is logging information that is sensitive to the user's security. Therefore, this finding is likely a false positive.",
+        "case_id": 9,
+        "ground_truth": "TRUE_POSITIVE",
+        "correct": false,
+        "summaries_used": {
+          "method": "The code saves a login credential pair consisting of a username and password to a temporary file in the cache directory of an Android application, using MD5 encryption to hash the credentials before writing them to the file.",
+          "class": "This class provides methods for saving and loading login information to and from an external storage device.",
+          "cluster": "A framework for creating web-based applications using Android's WebView component."
+        },
+        "raw_response": "CLASSIFICATION: FALSE_POSITIVE\nCONFIDENCE: 3\nREASONING: The LLM-generated summaries indicate that the code saves a login credential pair to a temporary file in the cache directory of an Android application using MD5 encryption. While this may be considered a vulnerability if the file is not properly secured or if the encryption is not strong enough, the context of the code suggests that this is a common and safe practice in Android development. The code also handles sensitive data, as it is logging information that is sensitive to the user's security. Therefore, this finding is likely a false positive."
+      },
+      {
+        "prediction": "FALSE_POSITIVE",
+        "confidence": 4,
+        "reasoning": "This finding is a false positive because the flagged code is a common safe Android pattern. The method summary indicates that the method takes a string prefix, a byte array digest, and a string fileName as input and prints them to the console using the format specified by the shasum(1) command-line tool. This is a common pattern in Android development, and the code is not dangerous. Additionally, the class summary indicates that this class provides a command-line interface for computing message digests using the Apache Commons Codec library, which is a widely used and trusted library. The cluster summary also indicates that various utilities for working with character encodings in Java, which is a common and safe practice in Android development. Therefore, this finding is a false positive and should be ignored.",
+        "case_id": 10,
+        "ground_truth": "FALSE_POSITIVE",
+        "correct": true,
+        "summaries_used": {
+          "method": "This method takes a string prefix, a byte array digest, and a string fileName as input, and prints them to the console using the format specified by the shasum(1) command-line tool.",
+          "class": "This class provides a command-line interface for computing message digests using the Apache Commons Codec library.",
+          "cluster": "Various utilities for working with character encodings in Java."
+        },
+        "raw_response": "CLASSIFICATION: FALSE_POSITIVE\nCONFIDENCE: 4\nREASONING: This finding is a false positive because the flagged code is a common safe Android pattern. The method summary indicates that the method takes a string prefix, a byte array digest, and a string fileName as input and prints them to the console using the format specified by the shasum(1) command-line tool. This is a common pattern in Android development, and the code is not dangerous. Additionally, the class summary indicates that this class provides a command-line interface for computing message digests using the Apache Commons Codec library, which is a widely used and trusted library. The cluster summary also indicates that various utilities for working with character encodings in Java, which is a common and safe practice in Android development. Therefore, this finding is a false positive and should be ignored."
+      }
+    ]
+  ],
+  "summary_evaluations": [
+    {
+      "helpful": false,
+      "accuracy": false,
+      "relevance": false,
+      "completeness": 1,
+      "missing_info": "The summaries provide little context about the vulnerability and the code.",
+      "improvement": "Provide more detailed information about the vulnerability, the code, and the security-relevant aspects.",
+      "case_id": 1,
+      "baseline_majority": "TRUE_POSITIVE",
+      "enhanced_majority": "FALSE_POSITIVE",
+      "raw_response": "HELPFUL: NO\nACCURACY: NO\nRELEVANCE: NO\nCOMPLETENESS: 1 (Very incomplete)\nMISSING_INFO: The summaries provide little context about the vulnerability and the code.\nIMPROVEMENT: Provide more detailed information about the vulnerability, the code, and the security-relevant aspects."
+    },
+    {
+      "helpful": false,
+      "accuracy": false,
+      "relevance": false,
+      "completeness": 2,
+      "missing_info": "The summaries provide a high-level overview of the code, but they do not provide any information about the specific vulnerability or how to exploit it.",
+      "improvement": "The summaries could be improved by providing more detailed information about the vulnerability, such as the type of attack and the potential impact, as well as any mitigations that can be applied. Additionally, the summaries could be more specific about the code that is relevant to the vulnerability, such as the specific method or class that is vulnerable.",
+      "case_id": 2,
+      "baseline_majority": "FALSE_POSITIVE",
+      "enhanced_majority": "FALSE_POSITIVE",
+      "raw_response": "HELPFUL: NO\nACCURACY: NO\nRELEVANCE: NO\nCOMPLETENESS: 2\nMISSING_INFO: The summaries provide a high-level overview of the code, but they do not provide any information about the specific vulnerability or how to exploit it.\nIMPROVEMENT: The summaries could be improved by providing more detailed information about the vulnerability, such as the type of attack and the potential impact, as well as any mitigations that can be applied. Additionally, the summaries could be more specific about the code that is relevant to the vulnerability, such as the specific method or class that is vulnerable."
+    },
+    {
+      "helpful": true,
+      "accuracy": true,
+      "relevance": true,
+      "completeness": 4,
+      "missing_info": "None",
+      "improvement": "The summaries could be more specific about the vulnerability, such as mentioning that the sensitive data is being logged to a file. Additionally, the class summary could provide more context about the purpose of the class and how it relates to the vulnerability.",
+      "case_id": 3,
+      "baseline_majority": "FALSE_POSITIVE",
+      "enhanced_majority": "FALSE_POSITIVE",
+      "raw_response": "HELPFUL: YES\nACCURACY: YES\nRELEVANCE: YES\nCOMPLETENESS: 4\nMISSING_INFO: None\nIMPROVEMENT: The summaries could be more specific about the vulnerability, such as mentioning that the sensitive data is being logged to a file. Additionally, the class summary could provide more context about the purpose of the class and how it relates to the vulnerability."
+    },
+    {
+      "helpful": true,
+      "accuracy": true,
+      "relevance": true,
+      "completeness": 4,
+      "missing_info": "None",
+      "improvement": "The summaries could be more specific about the potential vulnerability, such as mentioning the fact that the code retrieves a shared preference value for a PIN and compares it to the text entered by the user in an EditText field. Additionally, the summaries could provide more context about the potential impact of the vulnerability, such as whether the vulnerability could be exploited to gain unauthorized access to the user's private notes.",
+      "case_id": 4,
+      "baseline_majority": "TRUE_POSITIVE",
+      "enhanced_majority": "FALSE_POSITIVE",
+      "raw_response": "HELPFUL: YES\nACCURACY: YES\nRELEVANCE: YES\nCOMPLETENESS: 4\nMISSING_INFO: None\nIMPROVEMENT: The summaries could be more specific about the potential vulnerability, such as mentioning the fact that the code retrieves a shared preference value for a PIN and compares it to the text entered by the user in an EditText field. Additionally, the summaries could provide more context about the potential impact of the vulnerability, such as whether the vulnerability could be exploited to gain unauthorized access to the user's private notes."
+    },
+    {
+      "helpful": true,
+      "accuracy": false,
+      "relevance": true,
+      "completeness": 2,
+      "missing_info": "The summaries do not provide any information about the potential vulnerabilities or risks associated with the code.",
+      "improvement": "The summaries could be improved by providing more detailed information about the potential vulnerabilities or risks associated with the code, and by highlighting the specific security-relevant aspects of the code that are being addressed.",
+      "case_id": 5,
+      "baseline_majority": "TRUE_POSITIVE",
+      "enhanced_majority": "TRUE_POSITIVE",
+      "raw_response": "HELPFUL: YES\nACCURACY: NO - The summaries are not factually accurate about the code. The method summary states that the code creates an SSL socket factory that trusts all certificates and skips host name verification, which is not the case. The class summary states that the code provides methods for making HTTPS requests with custom SSL socket factories, which is not the case. The cluster summary states that the classes collectively handle the transfer of funds between accounts using a shared preference file for storing user data and a background task for sending the transfer request, which is not the case.\nRELEVANCE: YES\nCOMPLETENESS: 2 (Somewhat complete)\nMISSING_INFO: The summaries do not provide any information about the potential vulnerabilities or risks associated with the code.\nIMPROVEMENT: The summaries could be improved by providing more detailed information about the potential vulnerabilities or risks associated with the code, and by highlighting the specific security-relevant aspects of the code that are being addressed."
+    },
+    {
+      "helpful": false,
+      "accuracy": false,
+      "relevance": false,
+      "completeness": 1,
+      "missing_info": "The summaries do not provide any information about the vulnerability, such as the type of attack or the impact of the vulnerability.",
+      "improvement": "The summaries could be improved by providing more information about the vulnerability, such as the type of attack and the impact of the vulnerability, in order to help the security analyst triage the finding more effectively.",
+      "case_id": 6,
+      "baseline_majority": "TRUE_POSITIVE",
+      "enhanced_majority": "TRUE_POSITIVE",
+      "raw_response": "HELPFUL: NO\nACCURACY: NO\nRELEVANCE: NO\nCOMPLETENESS: 1 (Very incomplete)\nMISSING_INFO: The summaries do not provide any information about the vulnerability, such as the type of attack or the impact of the vulnerability.\nIMPROVEMENT: The summaries could be improved by providing more information about the vulnerability, such as the type of attack and the impact of the vulnerability, in order to help the security analyst triage the finding more effectively."
+    },
+    {
+      "helpful": true,
+      "accuracy": false,
+      "relevance": true,
+      "completeness": 3,
+      "missing_info": "The specific vulnerability and the impact of the vulnerability are missing from the summaries.",
+      "improvement": "The class summary could be improved by providing more details about the specific vulnerability and its impact on the system. The method summary could also be improved by providing more details about the encryption mechanism used and the potential risks associated with it.",
+      "case_id": 7,
+      "baseline_majority": "TRUE_POSITIVE",
+      "enhanced_majority": "TRUE_POSITIVE",
+      "raw_response": "HELPFUL: YES\nACCURACY: NO - the summaries are not factually accurate about the code. The class summary states that the class provides a weak encryption mechanism, but the method summary states that the class uses a fixed key.\nRELEVANCE: YES - the summaries focus on security-relevant aspects such as the use of a weak cryptographic algorithm.\nCOMPLETENESS: 3 - the summaries provide some context about the code, but they are missing some critical information such as the specific vulnerability and the impact of the vulnerability.\nMISSING_INFO: The specific vulnerability and the impact of the vulnerability are missing from the summaries.\nIMPROVEMENT: The class summary could be improved by providing more details about the specific vulnerability and its impact on the system. The method summary could also be improved by providing more details about the encryption mechanism used and the potential risks associated with it."
+    },
+    {
+      "helpful": false,
+      "accuracy": false,
+      "relevance": false,
+      "completeness": 1,
+      "missing_info": "The summaries do not provide any information about the vulnerability, such as the impact of the vulnerability or how to exploit it.",
+      "improvement": "The summaries could be improved by providing more information about the vulnerability, such as the impact of the vulnerability and how to exploit it. Additionally, the summaries could be more relevant to the security analyst's needs by providing more context about the code and the system.",
+      "case_id": 8,
+      "baseline_majority": "TRUE_POSITIVE",
+      "enhanced_majority": "TRUE_POSITIVE",
+      "raw_response": "HELPFUL: NO\nACCURACY: NO\nRELEVANCE: NO\nCOMPLETENESS: 1\nMISSING_INFO: The summaries do not provide any information about the vulnerability, such as the impact of the vulnerability or how to exploit it.\nIMPROVEMENT: The summaries could be improved by providing more information about the vulnerability, such as the impact of the vulnerability and how to exploit it. Additionally, the summaries could be more relevant to the security analyst's needs by providing more context about the code and the system."
+    },
+    {
+      "helpful": false,
+      "accuracy": false,
+      "relevance": false,
+      "completeness": 2,
+      "missing_info": "The summaries do not provide information about the potential impact of the vulnerability, the potential attacker's motivations, or the steps to reproduce the vulnerability.",
+      "improvement": "The summaries could be improved by including more context about the vulnerability, such as the potential impact on the application, the potential motivations of the attacker, and the steps to reproduce the vulnerability. Additionally, the summaries could be more specific about the code snippets and the file paths mentioned in the finding.",
+      "case_id": 9,
+      "baseline_majority": "FALSE_POSITIVE",
+      "enhanced_majority": "FALSE_POSITIVE",
+      "raw_response": "HELPFUL: NO\nACCURACY: NO\nRELEVANCE: NO\nCOMPLETENESS: 2 (Somewhat complete)\nMISSING_INFO: The summaries do not provide information about the potential impact of the vulnerability, the potential attacker's motivations, or the steps to reproduce the vulnerability.\nIMPROVEMENT: The summaries could be improved by including more context about the vulnerability, such as the potential impact on the application, the potential motivations of the attacker, and the steps to reproduce the vulnerability. Additionally, the summaries could be more specific about the code snippets and the file paths mentioned in the finding."
+    },
+    {
+      "helpful": false,
+      "accuracy": false,
+      "relevance": false,
+      "completeness": 1,
+      "missing_info": "The summaries do not provide any information about the potential security implications of the code, such as whether the code is vulnerable to a specific attack or whether it is used to store sensitive data.",
+      "improvement": "The summaries could be improved by providing more context about the security implications of the code, such as whether it is vulnerable to a specific attack or whether it is used to store sensitive data. Additionally, the summaries could be more detailed and provide specific examples of how the code could be used to exploit vulnerabilities.",
+      "case_id": 10,
+      "baseline_majority": "FALSE_POSITIVE",
+      "enhanced_majority": "FALSE_POSITIVE",
+      "raw_response": "HELPFUL: NO\nACCURACY: NO\nRELEVANCE: NO\nCOMPLETENESS: 1 (Very incomplete)\nMISSING_INFO: The summaries do not provide any information about the potential security implications of the code, such as whether the code is vulnerable to a specific attack or whether it is used to store sensitive data.\nIMPROVEMENT: The summaries could be improved by providing more context about the security implications of the code, such as whether it is vulnerable to a specific attack or whether it is used to store sensitive data. Additionally, the summaries could be more detailed and provide specific examples of how the code could be used to exploit vulnerabilities."
+    }
+  ]
+}

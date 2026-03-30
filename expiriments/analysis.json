@@ -1,0 +1,113 @@
+{
+  "summary": {
+    "num_cases": 10,
+    "num_runs": 1,
+    "ground_truth_distribution": {
+      "true_positives": 5,
+      "false_positives": 5
+    }
+  },
+  "baseline": {
+    "accuracy_mean": 0.3,
+    "accuracy_std": 0.0,
+    "tp_accuracy_mean": 0.4,
+    "fp_accuracy_mean": 0.2,
+    "precision_mean": 0.333,
+    "recall_mean": 0.4,
+    "f1_mean": 0.364,
+    "confidence_mean": 3.8,
+    "per_case_accuracy": {
+      "1": 0.0,
+      "2": 0.0,
+      "3": 0.0,
+      "4": 0.0,
+      "5": 0.0,
+      "6": 0.0,
+      "7": 1.0,
+      "8": 1.0,
+      "9": 0.0,
+      "10": 1.0
+    },
+    "per_case_confidence": {
+      "1": 4.0,
+      "2": 4.0,
+      "3": 4.0,
+      "4": 4.0,
+      "5": 4.0,
+      "6": 4.0,
+      "7": 4.0,
+      "8": 4.0,
+      "9": 3.0,
+      "10": 3.0
+    }
+  },
+  "enhanced": {
+    "accuracy_mean": 0.5,
+    "accuracy_std": 0.0,
+    "tp_accuracy_mean": 0.4,
+    "fp_accuracy_mean": 0.6,
+    "precision_mean": 0.5,
+    "recall_mean": 0.4,
+    "f1_mean": 0.444,
+    "confidence_mean": 3.9,
+    "per_case_accuracy": {
+      "1": 1.0,
+      "2": 0.0,
+      "3": 0.0,
+      "4": 1.0,
+      "5": 0.0,
+      "6": 0.0,
+      "7": 1.0,
+      "8": 1.0,
+      "9": 0.0,
+      "10": 1.0
+    },
+    "per_case_confidence": {
+      "1": 4.0,
+      "2": 4.0,
+      "3": 4.0,
+      "4": 4.0,
+      "5": 4.0,
+      "6": 4.0,
+      "7": 4.0,
+      "8": 4.0,
+      "9": 3.0,
+      "10": 4.0
+    }
+  },
+  "improvement": {
+    "accuracy_delta": 0.2,
+    "f1_delta": 0.081,
+    "confidence_delta": 0.1
+  },
+  "summary_evaluation": {
+    "helpful_pct": 40.0,
+    "accurate_pct": 20.0,
+    "relevant_pct": 40.0,
+    "avg_completeness": 2.1
+  },
+  "per_run_details": {
+    "baseline": [
+      {
+        "accuracy": 0.3,
+        "tp_accuracy": 0.4,
+        "fp_accuracy": 0.2,
+        "precision": 0.3333333333333333,
+        "recall": 0.4,
+        "f1": 0.3636363636363636,
+        "avg_confidence": 3.8
+      }
+    ],
+    "enhanced": [
+      {
+        "accuracy": 0.5,
+        "tp_accuracy": 0.4,
+        "fp_accuracy": 0.6,
+        "precision": 0.5,
+        "recall": 0.4,
+        "f1": 0.4444444444444445,
+        "avg_confidence": 3.9
+      }
+    ]
+  }
+}

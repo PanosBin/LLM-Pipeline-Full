@@ -1,0 +1,52 @@
+{
+  "1": {
+    "method": "The method extractRecords() makes an HTTP POST request to the URL stored in the \"apiurl\" preference, with a JSON payload containing the encrypted data received from the previous screen.",
+    "class": "This class GetTransactions extends AppCompatActivity and provides a user interface for viewing transaction records.",
+    "cluster": "A user interface for adding, approving, and managing beneficiaries for a mobile banking application."
+  },
+  "2": {
+    "method": "The code sends a POST request to an API endpoint with encrypted data, retrieves the response, decrypts it, and displays the result as a toast message or starts a new activity depending on the status of the response.",
+    "class": "The SendMoney class is an Android app that allows users to transfer money from their account to another account using biometric authentication.",
+    "cluster": "A user interface for adding, approving, and managing beneficiaries for a mobile banking application."
+  },
+  "3": {
+    "method": "The checkout method takes an EditText object as input and attempts to process the credit card information entered by the user.",
+    "class": "This class LogActivity is an Android activity that allows users to enter their credit card information and process it using a custom processCC() method.",
+    "cluster": "A way for users to manage their API credentials and access control settings on an Android device."
+  },
+  "4": {
+    "method": "The code retrieves a shared preference value for a PIN, compares it to the text entered by the user in an EditText field, and if they match, displays a list of notes from a database using a SimpleCursorAdapter.",
+    "class": "This class AccessControl3NotesActivity extends AppCompatActivity and provides an interface for accessing and displaying private notes stored in a database.",
+    "cluster": "A way for users to manage their API credentials and access control settings on an Android device."
+  },
+  "5": {
+    "method": "The code creates an SSL socket factory that trusts all certificates and skips host name verification, which is useful for testing purposes but should not be used in production environments.",
+    "class": "This class provides methods for making HTTPS requests with custom SSL socket factories, allowing the user to bypass host name verification in the Android emulator.",
+    "cluster": "The classes collectively handle the transfer of funds between accounts using a shared preference file for storing user data and a background task for sending the transfer request."
+  },
+  "6": {
+    "method": "The code inserts a new transaction into a database table with the given ID, sender, receiver, and amount, and logs the transaction details to the console.",
+    "class": "This class provides an interface for managing transactions in a database.",
+    "cluster": "The classes collectively handle the transfer of funds between accounts using a shared preference file for storing user data and a background task for sending the transfer request."
+  },
+  "7": {
+    "method": "The provided code creates an AES encryption key using the SecretKeySpec class and initializes a Cipher object with the key to encrypt a string of data.",
+    "class": "This class provides a weak encryption mechanism using the AES algorithm with a fixed key and returns the encrypted data as a base64-encoded string.",
+    "cluster": "A way to interact with the Android platform and perform various tasks such as starting activities, making network requests, and handling user authentication."
+  },
+  "8": {
+    "method": "The provided Java code uses the AES encryption algorithm with CBC mode and PKCS5 padding to encrypt a given string, using a hardcoded secret key and initialization vector, and then base64 encodes the resulting ciphertext before returning it as a string.",
+    "class": "This class provides various encryption-related methods for encrypting and decrypting data using different algorithms such as AES with ECB and CBC modes, PKCS5 padding, and base64 encoding.",
+    "cluster": "A database management system for storing and retrieving data in an Android application."
+  },
+  "9": {
+    "method": "The code saves a login credential pair consisting of a username and password to a temporary file in the cache directory of an Android application, using MD5 encryption to hash the credentials before writing them to the file.",
+    "class": "This class provides methods for saving and loading login information to and from an external storage device.",
+    "cluster": "A framework for creating web-based applications using Android's WebView component."
+  },
+  "10": {
+    "method": "This method takes a string prefix, a byte array digest, and a string fileName as input, and prints them to the console using the format specified by the shasum(1) command-line tool.",
+    "class": "This class provides a command-line interface for computing message digests using the Apache Commons Codec library.",
+    "cluster": "Various utilities for working with character encodings in Java."
+  }
+}

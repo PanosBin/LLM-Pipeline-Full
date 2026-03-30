@@ -1,0 +1,621 @@
+{
+  "temperatures": {
+    "0.01": {
+      "accuracy": 0.3,
+      "tp_accuracy": 0.4,
+      "fp_accuracy": 0.2,
+      "correct": 3,
+      "predictions": [
+        {
+          "case_id": 1,
+          "prediction": "TRUE_POSITIVE",
+          "ground_truth": "FALSE_POSITIVE",
+          "correct": false,
+          "confidence": 4,
+          "reasoning": "This finding is a real vulnerability. The code is using `setVisibility(View.GONE)` to hide a `RecyclerView` element, which can be a security risk if t"
+        },
+        {
+          "case_id": 2,
+          "prediction": "FALSE_POSITIVE",
+          "ground_truth": "TRUE_POSITIVE",
+          "correct": false,
+          "confidence": 4,
+          "reasoning": "The flagged code is a common safe Android pattern, and it is not a vulnerability. The `Log.d()` method is used to log debug information, and it is not"
+        },
+        {
+          "case_id": 3,
+          "prediction": "FALSE_POSITIVE",
+          "ground_truth": "TRUE_POSITIVE",
+          "correct": false,
+          "confidence": 4,
+          "reasoning": "This finding is a false positive because the code is logging sensitive information, but it is not actually a vulnerability. The `Log.e()` method is us"
+        },
+        {
+          "case_id": 4,
+          "prediction": "TRUE_POSITIVE",
+          "ground_truth": "FALSE_POSITIVE",
+          "correct": false,
+          "confidence": 4,
+          "reasoning": "This finding is a real vulnerability. The code is setting the visibility of a text view to invisible, which can potentially hide sensitive data from t"
+        },
+        {
+          "case_id": 5,
+          "prediction": "TRUE_POSITIVE",
+          "ground_truth": "FALSE_POSITIVE",
+          "correct": false,
+          "confidence": 4,
+          "reasoning": "This finding is a real vulnerability. The flagged code is a public method that accepts self-signed certificates, which is a critical security hole. Th"
+        },
+        {
+          "case_id": 6,
+          "prediction": "TRUE_POSITIVE",
+          "ground_truth": "FALSE_POSITIVE",
+          "correct": false,
+          "confidence": 4,
+          "reasoning": "This finding is a true positive because the code is using SQLite Database and executing raw SQL query, which is a common practice in Android developme"
+        },
+        {
+          "case_id": 7,
+          "prediction": "TRUE_POSITIVE",
+          "ground_truth": "TRUE_POSITIVE",
+          "correct": true,
+          "confidence": 4,
+          "reasoning": "The finding is a real vulnerability. The description of the vulnerability, \"Calling Cipher.getInstance(\"AES\") will return AES ECB mode by default,\" ac"
+        },
+        {
+          "case_id": 8,
+          "prediction": "TRUE_POSITIVE",
+          "ground_truth": "TRUE_POSITIVE",
+          "correct": true,
+          "confidence": 4,
+          "reasoning": "This finding is a true positive because the flagged code is actually using a static IV for AES-CBC mode, which is a vulnerable pattern. The code is fl"
+        },
+        {
+          "case_id": 9,
+          "prediction": "FALSE_POSITIVE",
+          "ground_truth": "TRUE_POSITIVE",
+          "correct": false,
+          "confidence": 4,
+          "reasoning": "This finding is a false positive because the code is logging sensitive information, but it is not actually a vulnerability. The code is logging the us"
+        },
+        {
+          "case_id": 10,
+          "prediction": "FALSE_POSITIVE",
+          "ground_truth": "FALSE_POSITIVE",
+          "correct": true,
+          "confidence": 3,
+          "reasoning": "The flagged code is a common safe Android pattern, as it is logging information that is not sensitive. The code is not vulnerable to any potential att"
+        }
+      ]
+    },
+    "0.1": {
+      "accuracy": 0.3,
+      "tp_accuracy": 0.4,
+      "fp_accuracy": 0.2,
+      "correct": 3,
+      "predictions": [
+        {
+          "case_id": 1,
+          "prediction": "TRUE_POSITIVE",
+          "ground_truth": "FALSE_POSITIVE",
+          "correct": false,
+          "confidence": 4,
+          "reasoning": "This finding is a real vulnerability. The code is hiding sensitive data from the user, which can be leaked. The flagged code is not a common safe Andr"
+        },
+        {
+          "case_id": 2,
+          "prediction": "FALSE_POSITIVE",
+          "ground_truth": "TRUE_POSITIVE",
+          "correct": false,
+          "confidence": 4,
+          "reasoning": "This finding is a false positive because the code is logging sensitive information, but it is a common and safe practice in Android development. The `"
+        },
+        {
+          "case_id": 3,
+          "prediction": "FALSE_POSITIVE",
+          "ground_truth": "TRUE_POSITIVE",
+          "correct": false,
+          "confidence": 4,
+          "reasoning": "This finding is a false positive because the code is logging sensitive information, but it is not actually handling sensitive data. The code is loggin"
+        },
+        {
+          "case_id": 4,
+          "prediction": "TRUE_POSITIVE",
+          "ground_truth": "FALSE_POSITIVE",
+          "correct": false,
+          "confidence": 4,
+          "reasoning": "This finding is a real vulnerability. The code is setting the visibility of a text view to invisible, which can potentially hide sensitive data from t"
+        },
+        {
+          "case_id": 5,
+          "prediction": "TRUE_POSITIVE",
+          "ground_truth": "FALSE_POSITIVE",
+          "correct": false,
+          "confidence": 4,
+          "reasoning": "This finding is a real vulnerability. The code is not handling SSL certificates properly, which can lead to man-in-the-middle attacks and other securi"
+        },
+        {
+          "case_id": 6,
+          "prediction": "TRUE_POSITIVE",
+          "ground_truth": "FALSE_POSITIVE",
+          "correct": false,
+          "confidence": 4,
+          "reasoning": "This finding is a true positive because the code is using SQLite Database and executing raw SQL query, which is a common practice in Android developme"
+        },
+        {
+          "case_id": 7,
+          "prediction": "TRUE_POSITIVE",
+          "ground_truth": "TRUE_POSITIVE",
+          "correct": true,
+          "confidence": 4,
+          "reasoning": "This finding is a real vulnerability. The code is calling Cipher.getInstance(\"AES\") without specifying the mode, which will return AES ECB mode by def"
+        },
+        {
+          "case_id": 8,
+          "prediction": "TRUE_POSITIVE",
+          "ground_truth": "TRUE_POSITIVE",
+          "correct": true,
+          "confidence": 4,
+          "reasoning": "This finding is a true positive because the flagged code is actually using a static IV for AES CBC mode, which is a vulnerability. The code is not han"
+        },
+        {
+          "case_id": 9,
+          "prediction": "FALSE_POSITIVE",
+          "ground_truth": "TRUE_POSITIVE",
+          "correct": false,
+          "confidence": 4,
+          "reasoning": "This finding is a false positive because the code is logging sensitive information, but it is not actually a vulnerability. The code is logging the us"
+        },
+        {
+          "case_id": 10,
+          "prediction": "FALSE_POSITIVE",
+          "ground_truth": "FALSE_POSITIVE",
+          "correct": true,
+          "confidence": 4,
+          "reasoning": "This finding is a false positive because the code is logging sensitive data, but it is not actually a vulnerability. The `Hex.encodeHexString()` metho"
+        }
+      ]
+    },
+    "0.2": {
+      "accuracy": 0.4,
+      "tp_accuracy": 0.6,
+      "fp_accuracy": 0.2,
+      "correct": 4,
+      "predictions": [
+        {
+          "case_id": 1,
+          "prediction": "TRUE_POSITIVE",
+          "ground_truth": "FALSE_POSITIVE",
+          "correct": false,
+          "confidence": 4,
+          "reasoning": "This finding is a real vulnerability. The code is setting the visibility of a RecyclerView to GONE, which can potentially hide sensitive data from the"
+        },
+        {
+          "case_id": 2,
+          "prediction": "TRUE_POSITIVE",
+          "ground_truth": "TRUE_POSITIVE",
+          "correct": true,
+          "confidence": 4,
+          "reasoning": "This finding is a true positive because the code is logging sensitive information, which is a common security risk in Android applications. The flagge"
+        },
+        {
+          "case_id": 3,
+          "prediction": "FALSE_POSITIVE",
+          "ground_truth": "TRUE_POSITIVE",
+          "correct": false,
+          "confidence": 3,
+          "reasoning": "This finding is a false positive because the code is logging sensitive information, but it is a common and safe practice in Android development. The `"
+        },
+        {
+          "case_id": 4,
+          "prediction": "TRUE_POSITIVE",
+          "ground_truth": "FALSE_POSITIVE",
+          "correct": false,
+          "confidence": 4,
+          "reasoning": "This finding is a real vulnerability. The code is setting the visibility of a text view to invisible, which can potentially hide sensitive data from t"
+        },
+        {
+          "case_id": 5,
+          "prediction": "TRUE_POSITIVE",
+          "ground_truth": "FALSE_POSITIVE",
+          "correct": false,
+          "confidence": 4,
+          "reasoning": "This finding is a real vulnerability. The flagged code is a stub implementation of the `X509TrustManager` interface, which is used to validate SSL cer"
+        },
+        {
+          "case_id": 6,
+          "prediction": "TRUE_POSITIVE",
+          "ground_truth": "FALSE_POSITIVE",
+          "correct": false,
+          "confidence": 4,
+          "reasoning": "This finding is a true positive because the code is using raw SQL queries, which can be vulnerable to SQL injection attacks. The flagged code is also "
+        },
+        {
+          "case_id": 7,
+          "prediction": "TRUE_POSITIVE",
+          "ground_truth": "TRUE_POSITIVE",
+          "correct": true,
+          "confidence": 4,
+          "reasoning": "This finding is a real vulnerability. The description of the vulnerability, \"Calling Cipher.getInstance(\"AES\") will return AES ECB mode by default,\" i"
+        },
+        {
+          "case_id": 8,
+          "prediction": "TRUE_POSITIVE",
+          "ground_truth": "TRUE_POSITIVE",
+          "correct": true,
+          "confidence": 4,
+          "reasoning": "This finding is a true positive because the flagged code is actually using a static IV for AES-CBC mode, which is a vulnerable pattern. The code is no"
+        },
+        {
+          "case_id": 9,
+          "prediction": "FALSE_POSITIVE",
+          "ground_truth": "TRUE_POSITIVE",
+          "correct": false,
+          "confidence": 4,
+          "reasoning": "This finding is a false positive because the code is logging sensitive information, but it is not actually a vulnerability. The code is logging inform"
+        },
+        {
+          "case_id": 10,
+          "prediction": "FALSE_POSITIVE",
+          "ground_truth": "FALSE_POSITIVE",
+          "correct": true,
+          "confidence": 3,
+          "reasoning": "The flagged code is a common safe Android pattern, as it is logging a digest of a file, which is a normal and expected behavior. The code is not handl"
+        }
+      ]
+    },
+    "0.3": {
+      "accuracy": 0.4,
+      "tp_accuracy": 0.4,
+      "fp_accuracy": 0.4,
+      "correct": 4,
+      "predictions": [
+        {
+          "case_id": 1,
+          "prediction": "FALSE_POSITIVE",
+          "ground_truth": "FALSE_POSITIVE",
+          "correct": true,
+          "confidence": 4,
+          "reasoning": "This finding is a false positive because the code is not actually hiding sensitive data, but rather setting the visibility of a RecyclerView to GONE, "
+        },
+        {
+          "case_id": 2,
+          "prediction": "FALSE_POSITIVE",
+          "ground_truth": "TRUE_POSITIVE",
+          "correct": false,
+          "confidence": 4,
+          "reasoning": "This finding is a false positive because the code is logging sensitive information, but it is a common safe Android pattern to log information for deb"
+        },
+        {
+          "case_id": 3,
+          "prediction": "FALSE_POSITIVE",
+          "ground_truth": "TRUE_POSITIVE",
+          "correct": false,
+          "confidence": 4,
+          "reasoning": "This finding is a false positive because the code is logging sensitive information, but it is not actually handling sensitive data. The code is loggin"
+        },
+        {
+          "case_id": 4,
+          "prediction": "TRUE_POSITIVE",
+          "ground_truth": "FALSE_POSITIVE",
+          "correct": false,
+          "confidence": 4,
+          "reasoning": "The flagged code `pinTxt.setVisibility(View.INVISIBLE);` is a real vulnerability. The `View.INVISIBLE` flag is used to hide the element from the user,"
+        },
+        {
+          "case_id": 5,
+          "prediction": "TRUE_POSITIVE",
+          "ground_truth": "FALSE_POSITIVE",
+          "correct": false,
+          "confidence": 4,
+          "reasoning": "This finding is a real vulnerability. The code is not handling sensitive data and is accepting self-signed certificates, which is a critical security "
+        },
+        {
+          "case_id": 6,
+          "prediction": "TRUE_POSITIVE",
+          "ground_truth": "FALSE_POSITIVE",
+          "correct": false,
+          "confidence": 4,
+          "reasoning": "This finding is a real vulnerability because the code is using raw SQL queries without proper input validation, which can lead to SQL Injection attack"
+        },
+        {
+          "case_id": 7,
+          "prediction": "TRUE_POSITIVE",
+          "ground_truth": "TRUE_POSITIVE",
+          "correct": true,
+          "confidence": 4,
+          "reasoning": "The finding is a real vulnerability. The description of the vulnerability, \"Calling Cipher.getInstance(\"AES\") will return AES ECB mode by default,\" ac"
+        },
+        {
+          "case_id": 8,
+          "prediction": "TRUE_POSITIVE",
+          "ground_truth": "TRUE_POSITIVE",
+          "correct": true,
+          "confidence": 4,
+          "reasoning": "This finding is a true positive because the flagged code is actually using a static IV for AES-CBC mode, which is a vulnerable pattern. The code is no"
+        },
+        {
+          "case_id": 9,
+          "prediction": "FALSE_POSITIVE",
+          "ground_truth": "TRUE_POSITIVE",
+          "correct": false,
+          "confidence": 4,
+          "reasoning": "This finding is a false positive because the code is logging sensitive information, but it is not actually vulnerable to an attack. The code is loggin"
+        },
+        {
+          "case_id": 10,
+          "prediction": "FALSE_POSITIVE",
+          "ground_truth": "FALSE_POSITIVE",
+          "correct": true,
+          "confidence": 3,
+          "reasoning": "The flagged code is a common and safe practice in Android development, logging sensitive data is not a vulnerability in itself. The code is also part "
+        }
+      ]
+    },
+    "0.5": {
+      "accuracy": 0.6,
+      "tp_accuracy": 0.6,
+      "fp_accuracy": 0.6,
+      "correct": 6,
+      "predictions": [
+        {
+          "case_id": 1,
+          "prediction": "FALSE_POSITIVE",
+          "ground_truth": "FALSE_POSITIVE",
+          "correct": true,
+          "confidence": 4,
+          "reasoning": "This finding is a false positive because the code is not actually hiding any sensitive data. The `setVisibility(View.GONE)` method is a common safe An"
+        },
+        {
+          "case_id": 2,
+          "prediction": "TRUE_POSITIVE",
+          "ground_truth": "TRUE_POSITIVE",
+          "correct": true,
+          "confidence": 3,
+          "reasoning": "This finding is a true positive because the code is logging sensitive data, which is a common security risk in Android applications. The flagged line "
+        },
+        {
+          "case_id": 3,
+          "prediction": "FALSE_POSITIVE",
+          "ground_truth": "TRUE_POSITIVE",
+          "correct": false,
+          "confidence": 4,
+          "reasoning": "This finding is a false positive because the code is logging sensitive information, but it is not actually handling it in a vulnerable way. The code i"
+        },
+        {
+          "case_id": 4,
+          "prediction": "FALSE_POSITIVE",
+          "ground_truth": "FALSE_POSITIVE",
+          "correct": true,
+          "confidence": 3,
+          "reasoning": "This finding is a false positive because the `setVisibility()` method is used to hide the pin text from the user, which is a common safe coding practi"
+        },
+        {
+          "case_id": 5,
+          "prediction": "TRUE_POSITIVE",
+          "ground_truth": "FALSE_POSITIVE",
+          "correct": false,
+          "confidence": 4,
+          "reasoning": "The flagged code is a real vulnerability because it allows the application to trust all SSL certificates, which is a critical security hole. This is a"
+        },
+        {
+          "case_id": 6,
+          "prediction": "TRUE_POSITIVE",
+          "ground_truth": "FALSE_POSITIVE",
+          "correct": false,
+          "confidence": 4,
+          "reasoning": "This finding is a true positive because the code is executing a raw SQL query with untrusted user input, which could potentially lead to a SQL Injecti"
+        },
+        {
+          "case_id": 7,
+          "prediction": "TRUE_POSITIVE",
+          "ground_truth": "TRUE_POSITIVE",
+          "correct": true,
+          "confidence": 4,
+          "reasoning": "This finding is a true positive because the code is using a weak cryptographic algorithm by default. The OWASP Mobile M5 recommendation is to use a st"
+        },
+        {
+          "case_id": 8,
+          "prediction": "TRUE_POSITIVE",
+          "ground_truth": "TRUE_POSITIVE",
+          "correct": true,
+          "confidence": 4,
+          "reasoning": "This finding is a real vulnerability because the flagged code is using a static IV for AES-CBC mode, which makes the ciphertext vulnerable to a Chosen"
+        },
+        {
+          "case_id": 9,
+          "prediction": "FALSE_POSITIVE",
+          "ground_truth": "TRUE_POSITIVE",
+          "correct": false,
+          "confidence": 3,
+          "reasoning": "This finding is a false positive because the code is logging sensitive information, but it is a common and safe practice in Android development. The c"
+        },
+        {
+          "case_id": 10,
+          "prediction": "FALSE_POSITIVE",
+          "ground_truth": "FALSE_POSITIVE",
+          "correct": true,
+          "confidence": 3,
+          "reasoning": "This finding is a false positive because the flagged code is a common safe Android pattern. The `System.out.println` statement is used to print debug "
+        }
+      ]
+    },
+    "0.7": {
+      "accuracy": 0.3,
+      "tp_accuracy": 0.4,
+      "fp_accuracy": 0.2,
+      "correct": 3,
+      "predictions": [
+        {
+          "case_id": 1,
+          "prediction": "TRUE_POSITIVE",
+          "ground_truth": "FALSE_POSITIVE",
+          "correct": false,
+          "confidence": 4,
+          "reasoning": "This finding is a real vulnerability. The code is trying to hide the UI element, which is not a common safe Android pattern. The flagged code is actua"
+        },
+        {
+          "case_id": 2,
+          "prediction": "FALSE_POSITIVE",
+          "ground_truth": "TRUE_POSITIVE",
+          "correct": false,
+          "confidence": 4,
+          "reasoning": "The flagged code is a common and safe Android pattern, and it does not pose a security risk in this context. The log statement is not sensitive data, "
+        },
+        {
+          "case_id": 3,
+          "prediction": "FALSE_POSITIVE",
+          "ground_truth": "TRUE_POSITIVE",
+          "correct": false,
+          "confidence": 2,
+          "reasoning": "This finding is a false positive because the code in question is not logging sensitive data. The `cctxt` object is a `TextView` object, and the `getTe"
+        },
+        {
+          "case_id": 4,
+          "prediction": "FALSE_POSITIVE",
+          "ground_truth": "FALSE_POSITIVE",
+          "correct": true,
+          "confidence": 3,
+          "reasoning": "This finding is a false positive due to the flagged code not actually handling sensitive data. The `pinTxt.setVisibility(View.INVISIBLE);` line sets t"
+        },
+        {
+          "case_id": 5,
+          "prediction": "TRUE_POSITIVE",
+          "ground_truth": "FALSE_POSITIVE",
+          "correct": false,
+          "confidence": 4,
+          "reasoning": "This is a real vulnerability. The code in question, `public void checkServerTrusted(X509Certificate[] chain, String authType) throws CertificateExcept"
+        },
+        {
+          "case_id": 6,
+          "prediction": "TRUE_POSITIVE",
+          "ground_truth": "FALSE_POSITIVE",
+          "correct": false,
+          "confidence": 4,
+          "reasoning": "This finding is a true positive because the flagged code is using untrusted user input in a raw SQL query, which can lead to SQL Injection vulnerabili"
+        },
+        {
+          "case_id": 7,
+          "prediction": "TRUE_POSITIVE",
+          "ground_truth": "TRUE_POSITIVE",
+          "correct": true,
+          "confidence": 4,
+          "reasoning": "The code is using the default AES ECB mode, which is a weak cryptographic algorithm. It is not a common safe Android pattern and is not handled secure"
+        },
+        {
+          "case_id": 8,
+          "prediction": "TRUE_POSITIVE",
+          "ground_truth": "TRUE_POSITIVE",
+          "correct": true,
+          "confidence": 4,
+          "reasoning": "This finding is a true positive because the code snippet provided is using a static IV in AES-CBC mode, which is a security vulnerability. The IV is n"
+        },
+        {
+          "case_id": 9,
+          "prediction": "FALSE_POSITIVE",
+          "ground_truth": "TRUE_POSITIVE",
+          "correct": false,
+          "confidence": 3,
+          "reasoning": "This finding is a false positive because it is a common and safe Android pattern to log information, especially when debugging or testing. The code in"
+        },
+        {
+          "case_id": 10,
+          "prediction": "TRUE_POSITIVE",
+          "ground_truth": "FALSE_POSITIVE",
+          "correct": false,
+          "confidence": 4,
+          "reasoning": "This finding is a true positive because the code is logging sensitive data, which is a common safe Android pattern. The flagged code is a common pract"
+        }
+      ]
+    },
+    "1.0": {
+      "accuracy": 0.4,
+      "tp_accuracy": 0.6,
+      "fp_accuracy": 0.2,
+      "correct": 4,
+      "predictions": [
+        {
+          "case_id": 1,
+          "prediction": "TRUE_POSITIVE",
+          "ground_truth": "FALSE_POSITIVE",
+          "correct": false,
+          "confidence": 4,
+          "reasoning": "The flagged code, recyclerView.setVisibility(View.GONE);, is a real vulnerability because it can be used to hide sensitive data from users, and this d"
+        },
+        {
+          "case_id": 2,
+          "prediction": "FALSE_POSITIVE",
+          "ground_truth": "TRUE_POSITIVE",
+          "correct": false,
+          "confidence": 3,
+          "reasoning": "This finding is a false positive because it is a common safe Android pattern to log sensitive data for debugging purposes. The flagged code is not act"
+        },
+        {
+          "case_id": 3,
+          "prediction": "TRUE_POSITIVE",
+          "ground_truth": "TRUE_POSITIVE",
+          "correct": true,
+          "confidence": 4,
+          "reasoning": "The flagged code \"Log.e()\" contains sensitive information, which is a clear indication of a potential vulnerability. Additionally, the finding's OWASP"
+        },
+        {
+          "case_id": 4,
+          "prediction": "FALSE_POSITIVE",
+          "ground_truth": "FALSE_POSITIVE",
+          "correct": true,
+          "confidence": 3,
+          "reasoning": "While the finding suggests that the code is trying to hide sensitive data, the method used to achieve this (setting the visibility to INVISIBLE) is a "
+        },
+        {
+          "case_id": 5,
+          "prediction": "TRUE_POSITIVE",
+          "ground_truth": "FALSE_POSITIVE",
+          "correct": false,
+          "confidence": 4,
+          "reasoning": "This finding is a true positive because the code snippet shows that the developer is not checking the validity of the SSL certificate. The vulnerabili"
+        },
+        {
+          "case_id": 6,
+          "prediction": "TRUE_POSITIVE",
+          "ground_truth": "FALSE_POSITIVE",
+          "correct": false,
+          "confidence": 4,
+          "reasoning": "This finding is a true positive, as the code is actually vulnerable to SQLite raw query injection. The vulnerability is due to the untrusted user inpu"
+        },
+        {
+          "case_id": 7,
+          "prediction": "TRUE_POSITIVE",
+          "ground_truth": "TRUE_POSITIVE",
+          "correct": true,
+          "confidence": 4,
+          "reasoning": "The flagged pattern is a weak cryptographic algorithm, specifically AES ECB mode, which is a clear indication of a real vulnerability. ECB mode is ins"
+        },
+        {
+          "case_id": 8,
+          "prediction": "TRUE_POSITIVE",
+          "ground_truth": "TRUE_POSITIVE",
+          "correct": true,
+          "confidence": 4,
+          "reasoning": "The flagged code initializes an IV array with all zeroes, which violates the OWASP Mobile M5 recommendation to use a random IV for AES CBC mode. This "
+        },
+        {
+          "case_id": 9,
+          "prediction": "FALSE_POSITIVE",
+          "ground_truth": "TRUE_POSITIVE",
+          "correct": false,
+          "confidence": 2,
+          "reasoning": "This finding is likely a false positive due to the fact that the code is logging sensitive information in a log file, which is a common safe Android p"
+        },
+        {
+          "case_id": 10,
+          "prediction": "TRUE_POSITIVE",
+          "ground_truth": "FALSE_POSITIVE",
+          "correct": false,
+          "confidence": 2,
+          "reasoning": "The flagged code logs sensitive data using the Apache Commons Codec library. The vulnerability is real and should be addressed. This is a common safe "
+        }
+      ]
+    }
+  },
+  "best": 0.5
+}
